@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './topbar.html',
   styleUrl: './topbar.scss',
+  standalone: true,
 })
-export class Topbar {
-
-}
+export class TopbarComponent {}

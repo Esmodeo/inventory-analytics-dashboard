@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './stat-card.html',
   styleUrl: './stat-card.scss',
+  standalone: true,
 })
-export class StatCard {
-
-}
+export class StatCardComponent {}

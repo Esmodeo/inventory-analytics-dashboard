@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './chart-widget.html',
   styleUrl: './chart-widget.scss',
+  standalone: true,
 })
-export class ChartWidget {
-
-}
+export class ChartWidgetComponent {}

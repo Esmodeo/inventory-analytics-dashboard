@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Sidebar } from '../sidebar/sidebar';
-import { Topbar } from '../topbar/topbar';
+import { SidebarComponent } from '../sidebar/sidebar';
+import { TopbarComponent } from '../topbar/topbar';
 
 @Component({
   selector: 'app-dashboard-layout',
-  imports: [RouterOutlet, Topbar, Sidebar],
+  imports: [RouterOutlet, TopbarComponent, SidebarComponent],
   templateUrl: './dashboard-layout.html',
   styleUrl: './dashboard-layout.scss',
+  standalone: true,
 })
-export class DashboardLayout {}
+export class DashboardLayoutComponent {}
