@@ -1,0 +1,60 @@
+@use '../../styles/utils/mixins' as *;
+
+.stock-analysis-page {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 4);
+}
+
+.stock-analysis-page__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: calc(var(--spacing) * 4);
+}
+
+.stock-analysis-page__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.stock-analysis-page__subtitle {
+  margin: 0;
+  color: var(--p-text-muted-color);
+}
+
+.stock-analysis-page__filters {
+  display: grid;
+  gap: calc(var(--spacing) * 3);
+}
+
+.stock-analysis-page__filter {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-inline: 1rem;
+  border: 1px solid var(--p-content-border-color);
+  border-radius: var(--p-border-radius-xl);
+  background: var(--p-content-background);
+  color: var(--p-text-muted-color);
+}
+
+.stock-analysis-page__filter--action {
+  justify-content: center;
+  font-weight: 600;
+  color: var(--p-primary-color);
+  cursor: pointer;
+}
+
+@include up(md) {
+  .stock-analysis-page__filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@include up(xl) {
+  .stock-analysis-page__filters {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
