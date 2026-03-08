@@ -1,1 +1,33 @@
-<p>data-table works!</p>
+<p-card>
+  <div class="data-table">
+    <div class="data-table__header">
+      <h3 class="data-table__title">{{ title() }}</h3>
+    </div>
+
+    <p-table [value]="rows()" [tableStyle]="{ 'min-width': '100%' }" responsiveLayout="scroll">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Date</th>
+          <th>Product</th>
+          <th>Type</th>
+          <th>Quantity</th>
+          <th>Value</th>
+          <th>Status</th>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="body" let-row>
+        <tr>
+          <td>{{ row.date }}</td>
+          <td>{{ row.product }}</td>
+          <td>{{ row.type }}</td>
+          <td>{{ row.quantity }}</td>
+          <td>{{ row.value }}</td>
+          <td>
+            <p-tag [value]="row.status" [severity]="getSeverity(row.status)" />
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</p-card>

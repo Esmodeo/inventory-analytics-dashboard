@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ChartOptions, ChartWidgetComponent } from '../../components/chart-widget/chart-widget';
+import { DataTableComponent, TransactionItem } from '../../components/data-table/data-table';
 import { StatCardComponent } from '../../components/stat-card/stat-card';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [StatCardComponent, ChartWidgetComponent],
+  imports: [StatCardComponent, ChartWidgetComponent, DataTableComponent],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
   standalone: true,
@@ -36,7 +37,7 @@ export class DashboardComponent {
       ],
       chart: {
         type: 'line',
-        height: 320,
+        height: 260,
         toolbar: {
           show: false,
         },
@@ -105,7 +106,7 @@ export class DashboardComponent {
       ],
       chart: {
         type: 'bar',
-        height: 320,
+        height: 260,
         toolbar: {
           show: false,
         },
@@ -154,4 +155,46 @@ export class DashboardComponent {
       },
     };
   }
+  recentTransactions: TransactionItem[] = [
+    {
+      date: '2026-03-08',
+      product: 'Wireless Mouse',
+      type: 'Incoming',
+      quantity: 48,
+      value: '$1,440',
+      status: 'Completed',
+    },
+    {
+      date: '2026-03-08',
+      product: 'Office Chair',
+      type: 'Outgoing',
+      quantity: 12,
+      value: '$2,160',
+      status: 'Pending',
+    },
+    {
+      date: '2026-03-07',
+      product: 'USB-C Hub',
+      type: 'Incoming',
+      quantity: 35,
+      value: '$875',
+      status: 'Completed',
+    },
+    {
+      date: '2026-03-07',
+      product: 'Standing Desk',
+      type: 'Outgoing',
+      quantity: 6,
+      value: '$1,980',
+      status: 'Completed',
+    },
+    {
+      date: '2026-03-06',
+      product: 'Mechanical Keyboard',
+      type: 'Outgoing',
+      quantity: 10,
+      value: '$1,250',
+      status: 'Cancelled',
+    },
+  ];
 }
