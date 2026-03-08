@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ChartOptions, ChartWidgetComponent } from '../../components/chart-widget/chart-widget';
+import { StatCardComponent } from '../../components/stat-card/stat-card';
 
 @Component({
   selector: 'app-stock-analysis',
   standalone: true,
-  imports: [ChartWidgetComponent],
+  imports: [ChartWidgetComponent, StatCardComponent],
   templateUrl: './stock-analysis.html',
   styleUrl: './stock-analysis.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,7 +24,7 @@ export class StockAnalysisComponent {
     ],
     chart: {
       type: 'area',
-      height: 220,
+      height: 360,
       toolbar: {
         show: false,
       },

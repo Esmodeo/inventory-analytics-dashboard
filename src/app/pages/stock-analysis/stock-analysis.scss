@@ -51,8 +51,17 @@
   display: block;
 }
 
+.stock-analysis-page__summary {
+  display: grid;
+  gap: calc(var(--spacing) * 4);
+}
+
 @include up(md) {
   .stock-analysis-page__filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stock-analysis-page__summary {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -60,5 +69,9 @@
 @include up(xl) {
   .stock-analysis-page__filters {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .stock-analysis-page__summary {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
