@@ -1,1 +1,7 @@
-<p>topbar works!</p>
+<p-button
+  [icon]="isDark ? 'pi pi-moon' : 'pi pi-sun'"
+  severity="secondary"
+  (onClick)="toggleDarkMode()"
+  [rounded]="true"
+  [title]="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
+/>
