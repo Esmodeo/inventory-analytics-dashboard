@@ -47,6 +47,10 @@
   cursor: pointer;
 }
 
+.stock-analysis-page__chart {
+  display: block;
+}
+
 @include up(md) {
   .stock-analysis-page__filters {
     grid-template-columns: repeat(2, minmax(0, 1fr));

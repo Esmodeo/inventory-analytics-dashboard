@@ -12,4 +12,8 @@
     <div class="stock-analysis-page__filter">Warehouse</div>
     <div class="stock-analysis-page__filter stock-analysis-page__filter--action">Export</div>
   </section>
+
+  <section class="stock-analysis-page__chart">
+    <app-chart-widget title="Stock Movement" [chartOptions]="stockMovementChartOptions" />
+  </section>
 </section>
