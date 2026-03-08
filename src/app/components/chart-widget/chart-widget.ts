@@ -23,7 +23,7 @@ export type ChartOptions = {
   dataLabels?: ApexDataLabels;
   grid?: ApexGrid;
   tooltip?: ApexTooltip;
-  legend: ApexLegend;
+  legend?: ApexLegend;
   title?: ApexTitleSubtitle;
   labels?: string[];
 };
