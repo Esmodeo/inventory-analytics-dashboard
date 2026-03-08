@@ -1,5 +1,13 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  inject,
+} from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-topbar',
@@ -16,6 +24,31 @@ export class TopbarComponent implements OnInit {
     this.isDark = !this.isDark;
     document.documentElement.classList.toggle('app-dark');
     localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+  }
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private cdr = inject(ChangeDetectorRef);
+
+  title = '';
+
+  constructor() {
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        map(() => {
+          let current = this.route.firstChild;
+
+          while (current?.firstChild) {
+            current = current.firstChild;
+          }
+
+          return current?.snapshot.data;
+        }),
+      )
+      .subscribe((data) => {
+        this.title = data?.['title'] ?? 'Dashboard';
+        this.cdr.markForCheck();
+      });
   }
   ngOnInit() {
     // restore theme preference on application start

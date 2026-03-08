@@ -11,10 +11,16 @@ export const routes: Routes = [
       {
         path: '',
         component: DashboardComponent,
+        data: {
+          title: 'Dashboard',
+        },
       },
       {
         path: 'analysis',
         component: StockAnalysisComponent,
+        data: {
+          title: 'Stock Analysis',
+        },
       },
     ],
   },
