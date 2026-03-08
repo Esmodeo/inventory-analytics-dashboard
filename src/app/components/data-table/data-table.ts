@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
@@ -35,6 +35,9 @@ export class DataTableComponent {
   title = input.required<string>();
   variant = input<TableVariant>('transactions');
   rows = input.required<TransactionItem[] | StockOverviewItem[]>();
+
+  transactionsRows = computed(() => this.rows() as TransactionItem[]);
+  stockOverviewRows = computed(() => this.rows() as StockOverviewItem[]);
 
   getStatusSeverity(
     status: TransactionItem['status'],

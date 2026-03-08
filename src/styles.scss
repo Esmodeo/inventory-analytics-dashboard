@@ -1,11 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @forward 'app/styles/index';
-@import 'tailwindcss';
-@import 'primeicons/primeicons.css';
+@forward 'tailwindcss';
+@forward 'primeicons/primeicons.css';
 
 html {
   min-height: 100%;
 }
+
 body {
   font-family: Lato, sans-serif;
   color: var(--p-text-color);
@@ -15,4 +16,7 @@ body {
   min-height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+html.app-dark body {
+  background: var(--p-surface-800);
 }
