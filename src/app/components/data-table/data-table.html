@@ -5,29 +5,55 @@
     </div>
 
     <p-table [value]="rows()" [tableStyle]="{ 'min-width': '100%' }" responsiveLayout="scroll">
-      <ng-template pTemplate="header">
-        <tr>
-          <th>Date</th>
-          <th>Product</th>
-          <th>Type</th>
-          <th>Quantity</th>
-          <th>Value</th>
-          <th>Status</th>
-        </tr>
-      </ng-template>
+      @if (variant() === 'transactions') {
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Date</th>
+            <th>Product</th>
+            <th>Type</th>
+            <th>Quantity</th>
+            <th>Value</th>
+            <th>Status</th>
+          </tr>
+        </ng-template>
 
-      <ng-template pTemplate="body" let-row>
-        <tr>
-          <td>{{ row.date }}</td>
-          <td>{{ row.product }}</td>
-          <td>{{ row.type }}</td>
-          <td>{{ row.quantity }}</td>
-          <td>{{ row.value }}</td>
-          <td>
-            <p-tag [value]="row.status" [severity]="getSeverity(row.status)" />
-          </td>
-        </tr>
-      </ng-template>
+        <ng-template pTemplate="body" let-row>
+          <tr>
+            <td>{{ row.date }}</td>
+            <td>{{ row.product }}</td>
+            <td>{{ row.type }}</td>
+            <td>{{ row.quantity }}</td>
+            <td>{{ row.value }}</td>
+            <td>
+              <p-tag [value]="row.status" [severity]="getStatusSeverity(row.status)" />
+            </td>
+          </tr>
+        </ng-template>
+      } @else {
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Product</th>
+            <th>Category</th>
+            <th>In Stock</th>
+            <th>Incoming</th>
+            <th>Outgoing</th>
+            <th>Trend</th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-row>
+          <tr>
+            <td>{{ row.product }}</td>
+            <td>{{ row.category }}</td>
+            <td>{{ row.inStock }}</td>
+            <td>{{ row.incoming }}</td>
+            <td>{{ row.outgoing }}</td>
+            <td>
+              <p-tag [value]="row.trend" [severity]="getTrendSeverity(row.trend)" />
+            </td>
+          </tr>
+        </ng-template>
+      }
     </p-table>
   </div>
 </p-card>

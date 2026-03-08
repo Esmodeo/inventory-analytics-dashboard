@@ -12,6 +12,17 @@ export type TransactionItem = {
   status: 'Completed' | 'Pending' | 'Cancelled';
 };
 
+export type StockOverviewItem = {
+  product: string;
+  category: string;
+  inStock: number;
+  incoming: number;
+  outgoing: number;
+  trend: 'Up' | 'Stable' | 'Down';
+};
+
+type TableVariant = 'transactions' | 'stock-overview';
+
 @Component({
   selector: 'app-data-table',
   standalone: true,
@@ -22,15 +33,31 @@ export type TransactionItem = {
 })
 export class DataTableComponent {
   title = input.required<string>();
-  rows = input.required<TransactionItem[]>();
+  variant = input<TableVariant>('transactions');
+  rows = input.required<TransactionItem[] | StockOverviewItem[]>();
 
-  getSeverity(status: TransactionItem['status']): 'success' | 'warn' | 'danger' | 'secondary' {
+  getStatusSeverity(
+    status: TransactionItem['status'],
+  ): 'success' | 'warn' | 'danger' | 'secondary' {
     switch (status) {
       case 'Completed':
         return 'success';
       case 'Pending':
         return 'warn';
       case 'Cancelled':
+        return 'danger';
+      default:
+        return 'secondary';
+    }
+  }
+
+  getTrendSeverity(trend: StockOverviewItem['trend']): 'success' | 'warn' | 'danger' | 'secondary' {
+    switch (trend) {
+      case 'Up':
+        return 'success';
+      case 'Stable':
+        return 'secondary';
+      case 'Down':
         return 'danger';
       default:
         return 'secondary';
