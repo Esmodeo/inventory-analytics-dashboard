@@ -31,3 +31,7 @@
     iconColor="var(--p-green-500)"
   />
 </section>
+<section class="dashboard-charts">
+  <app-chart-widget title="Stock Value Trend" [chartOptions]="stockValueChartOptions" />
+  <app-chart-widget title="Top Categories" [chartOptions]="topCategoriesChartOptions" />
+</section>

@@ -1,1 +1,21 @@
-<p>chart-widget works!</p>
+<p-card>
+  <div class="chart-widget">
+    <div class="chart-widget__header">
+      <h3 class="chart-widget__title">{{ title() }}</h3>
+    </div>
+
+    <apx-chart
+      [series]="chartOptions().series"
+      [chart]="chartOptions().chart"
+      [xaxis]="chartOptions().xaxis"
+      [yaxis]="chartOptions().yaxis ?? defaultYAxis"
+      [stroke]="chartOptions().stroke ?? defaultStroke"
+      [dataLabels]="chartOptions().dataLabels ?? defaultDataLabels"
+      [grid]="chartOptions().grid ?? defaultGrid"
+      [tooltip]="chartOptions().tooltip ?? defaultTooltip"
+      [legend]="chartOptions().legend ?? defaultLegend"
+      [title]="chartOptions().title ?? defaultTitle"
+      [labels]="chartOptions().labels ?? defaultLabels"
+    />
+  </div>
+</p-card>

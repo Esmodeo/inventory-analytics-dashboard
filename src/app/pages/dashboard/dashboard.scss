@@ -1,4 +1,4 @@
-@use '../../styles//utils/mixins' as *;
+@use '../../styles/utils/mixins' as *;
 .dashboard-kpis {
   display: grid;
   grid-gap: calc(var(--spacing) * 4);
@@ -12,5 +12,16 @@
 @include up(xl) {
   .dashboard-kpis {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.dashboard-charts {
+  display: grid;
+  gap: calc(var(--spacing) * 4);
+  margin-top: calc(var(--spacing) * 4);
+}
+
+@include up(xl) {
+  .dashboard-charts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
