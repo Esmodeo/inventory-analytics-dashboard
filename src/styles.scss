@@ -1,2 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@forward 'app/styles/index';
 @import 'primeicons/primeicons.css';
+
+html {
+  min-height: 100%;
+}
+body {
+  font-family: Lato, sans-serif;
+  color: var(--p-text-color);
+  background: var(--p-surface-100);
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,1 +1,21 @@
-<p>sidebar works!</p>
+<div class="sidebar-logo">
+  <svg width="160" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <g transform="translate(0,4)">
+      <rect x="2" y="16" width="4" height="12" rx="1" fill="var(--p-primary-color)"></rect>
+      <rect x="10" y="10" width="4" height="18" rx="1" fill="var(--p-primary-color)"></rect>
+      <rect x="18" y="6" width="4" height="22" rx="1" fill="var(--p-primary-color)"></rect>
+    </g>
+
+    <text
+      x="35"
+      y="28"
+      font-family="Inter, Arial, sans-serif"
+      font-size="18"
+      font-weight="600"
+      fill="var(--p-text-color)"
+    >
+      StockLens
+    </text>
+  </svg>
+</div>
+<p-menu [model]="items" />
