@@ -1,8 +1,8 @@
 <div class="layout">
-  <app-sidebar></app-sidebar>
+  <app-sidebar [class.sidebar-closed]="isSidebarClosed()"></app-sidebar>
 
   <div class="main">
-    <app-topbar></app-topbar>
+    <app-topbar (closeSidebarEvent)="closeSidebar($event)"></app-topbar>
 
     <div class="content">
       <div class="content__inner">

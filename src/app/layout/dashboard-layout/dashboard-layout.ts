@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from '../sidebar/sidebar';
 import { TopbarComponent } from '../topbar/topbar';
@@ -10,4 +10,9 @@ import { TopbarComponent } from '../topbar/topbar';
   styleUrl: './dashboard-layout.scss',
   standalone: true,
 })
-export class DashboardLayoutComponent {}
+export class DashboardLayoutComponent {
+  isSidebarClosed = signal<boolean>(false);
+  closeSidebar(val: boolean) {
+    this.isSidebarClosed.set(val);
+  }
+}

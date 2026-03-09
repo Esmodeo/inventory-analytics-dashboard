@@ -4,6 +4,8 @@ import {
   Component,
   OnInit,
   inject,
+  output,
+  signal,
 } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
@@ -18,6 +20,12 @@ import { filter, map } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopbarComponent implements OnInit {
+  readonly closeSidebarEvent = output<boolean>();
+  isSidebarClosed = signal<boolean>(false);
+  closeSidebar() {
+    this.isSidebarClosed.set(!this.isSidebarClosed());
+    this.closeSidebarEvent.emit(this.isSidebarClosed());
+  }
   isDark = false;
   // Toggles application theme. Applies a class to the root html element and persists the preference in localStorage.
   toggleDarkMode() {

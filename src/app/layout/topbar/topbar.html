@@ -1,4 +1,10 @@
-<p-button icon="pi pi-bars" severity="secondary" [outlined]="true" title="Toogle sidemenu" />
+<p-button
+  icon="pi pi-bars"
+  severity="secondary"
+  [outlined]="true"
+  title="Toogle sidemenu"
+  (onClick)="closeSidebar()"
+/>
 <h1 class="text-2xl grow">{{ title }}</h1>
 <p-button
   [icon]="isDark ? 'pi pi-moon' : 'pi pi-sun'"
