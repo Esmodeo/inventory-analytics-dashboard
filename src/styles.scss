@@ -16,6 +16,7 @@ body {
   min-height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 html.app-dark body {
   background: var(--p-surface-800);
