@@ -1,32 +1,16 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import {
-  ApexAxisChartSeries,
-  ApexChart,
   ApexDataLabels,
   ApexGrid,
   ApexLegend,
   ApexStroke,
   ApexTitleSubtitle,
   ApexTooltip,
-  ApexXAxis,
   ApexYAxis,
   NgApexchartsModule,
 } from 'ng-apexcharts';
 import { CardModule } from 'primeng/card';
-
-export type ChartOptions = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  xaxis: ApexXAxis;
-  yaxis?: ApexYAxis;
-  stroke?: ApexStroke;
-  dataLabels?: ApexDataLabels;
-  grid?: ApexGrid;
-  tooltip?: ApexTooltip;
-  legend?: ApexLegend;
-  title?: ApexTitleSubtitle;
-  labels?: string[];
-};
+import { ChartOptions } from './chart-widget.type';
 
 @Component({
   selector: 'app-chart-widget',
