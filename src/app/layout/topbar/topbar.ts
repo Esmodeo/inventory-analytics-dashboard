@@ -2,13 +2,13 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  OnInit,
   inject,
   output,
   signal,
 } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
+import { ChartThemeService } from '../../services/chart-theme.service';
 import { filter, map } from 'rxjs/operators';
 
 @Component({
@@ -19,19 +19,18 @@ import { filter, map } from 'rxjs/operators';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TopbarComponent implements OnInit {
+export class TopbarComponent {
   readonly closeSidebarEvent = output<boolean>();
   isSidebarClosed = signal<boolean>(false);
+  readonly themeService = inject(ChartThemeService);
+
   closeSidebar() {
     this.isSidebarClosed.set(!this.isSidebarClosed());
     this.closeSidebarEvent.emit(this.isSidebarClosed());
   }
-  isDark = false;
-  // Toggles application theme. Applies a class to the root html element and persists the preference in localStorage.
+
   toggleDarkMode() {
-    this.isDark = !this.isDark;
-    document.documentElement.classList.toggle('app-dark');
-    localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+    this.themeService.toggleTheme();
   }
   private router = inject(Router);
   private route = inject(ActivatedRoute);
@@ -57,14 +56,5 @@ export class TopbarComponent implements OnInit {
         this.title = data?.['title'] ?? 'Dashboard';
         this.cdr.markForCheck();
       });
-  }
-  ngOnInit() {
-    // restore theme preference on application start
-    const saved = localStorage.getItem('theme');
-
-    if (saved === 'dark') {
-      this.isDark = true;
-      document.documentElement.classList.add('app-dark');
-    }
   }
 }

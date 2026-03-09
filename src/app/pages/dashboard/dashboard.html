@@ -32,8 +32,8 @@
   />
 </section>
 <section class="dashboard-charts">
-  <app-chart-widget title="Stock Value Trend" [chartOptions]="stockValueChartOptions" />
-  <app-chart-widget title="Top Categories" [chartOptions]="topCategoriesChartOptions" />
+  <app-chart-widget title="Stock Value Trend" [chartOptions]="stockValueChartOptions()" />
+  <app-chart-widget title="Top Categories" [chartOptions]="topCategoriesChartOptions()" />
 </section>
 <section class="dashboard-table">
   <app-data-table title="Recent Transactions" [rows]="recentTransactions" />

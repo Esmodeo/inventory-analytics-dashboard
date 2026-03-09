@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { recentTransactions } from '../../assets/mocks/recent-transactions-data';
 import { ChartWidgetComponent } from '../../components/chart-widget/chart-widget';
 import { ChartOptions } from '../../components/chart-widget/chart-widget.type';
 import { DataTableComponent } from '../../components/data-table/data-table';
 import { StatCardComponent } from '../../components/stat-card/stat-card';
+import { ChartThemeService } from '../../services/chart-theme.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,21 +16,10 @@ import { StatCardComponent } from '../../components/stat-card/stat-card';
 })
 export class DashboardComponent {
   recentTransactions = recentTransactions;
-  private get isDarkTheme(): boolean {
-    return document.documentElement.classList.contains('app-dark');
-  }
-  private getChartThemeColors() {
-    const isDark = this.isDarkTheme;
+  private readonly chartThemeService = inject(ChartThemeService);
 
-    return {
-      textColor: isDark ? '#e5e7eb' : '#374151',
-      mutedTextColor: isDark ? '#9ca3af' : '#6b7280',
-      gridColor: isDark ? 'rgba(255,255,255,0.08)' : 'rgba(15,23,42,0.08)',
-      tooltipTheme: isDark ? 'dark' : 'light',
-    };
-  }
   private buildStockValueChart(): ChartOptions {
-    const theme = this.getChartThemeColors();
+    const theme = this.chartThemeService.getChartThemeColors();
     return {
       series: [
         {
@@ -93,11 +83,11 @@ export class DashboardComponent {
     };
   }
 
-  topCategoriesChartOptions: ChartOptions = this.buildTopCategoriesChart();
-  stockValueChartOptions: ChartOptions = this.buildStockValueChart();
+  readonly topCategoriesChartOptions = computed<ChartOptions>(() => this.buildTopCategoriesChart());
+  readonly stockValueChartOptions = computed<ChartOptions>(() => this.buildStockValueChart());
 
   private buildTopCategoriesChart(): ChartOptions {
-    const theme = this.getChartThemeColors();
+    const theme = this.chartThemeService.getChartThemeColors();
 
     return {
       series: [
