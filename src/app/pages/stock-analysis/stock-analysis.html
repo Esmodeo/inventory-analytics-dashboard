@@ -1,48 +1,59 @@
-<div class="stock-analysis-page">
-  <header class="stock-analysis-page__header">
-    <div>
-      <p class="stock-analysis-page__subtitle">Detailed inventory movement and category insights</p>
-    </div>
-  </header>
+<header>
+  <div class="text-muted">Detailed inventory movement and category insights</div>
+</header>
 
-  <section class="stock-analysis-page__filters">
-    <div class="stock-analysis-page__filter">Date Range</div>
-    <div class="stock-analysis-page__filter">Category</div>
-    <div class="stock-analysis-page__filter">Warehouse</div>
-    <div class="stock-analysis-page__filter stock-analysis-page__filter--action">Export</div>
-  </section>
+<section class="stock-analysis-filters">
+  <p-datepicker
+    selectionMode="range"
+    placeholder="Date Range"
+    [showIcon]="true"
+    [readonlyInput]="true"
+  />
+  <p-select
+    [options]="categoryOptions"
+    optionLabel="label"
+    optionValue="value"
+    placeholder="Category"
+  />
+  <p-select
+    [options]="warehouseOptions"
+    optionLabel="label"
+    optionValue="value"
+    placeholder="Warehouse"
+  />
+  <p-button label="Export" icon="pi pi-file-export" fluid />
+</section>
 
-  <section class="stock-analysis-page__chart">
-    <app-chart-widget title="Stock Movement" [chartOptions]="stockMovementChartOptions()" />
-  </section>
+<section class="stock-analysis-chart">
+  <app-chart-widget title="Stock Movement" [chartOptions]="stockMovementChartOptions()" />
+</section>
 
-  <section class="stock-analysis-page__summary">
-    <app-stat-card
-      title="Net Change"
-      value="+41"
-      subtitle="Compared to previous period"
-      icon="pi pi-arrow-up-right"
-      iconColor="var(--p-green-500)"
-    />
+<section class="stock-analysis-summary">
+  <app-stat-card
+    title="Net Change"
+    value="+41"
+    subtitle="Compared to previous period"
+    icon="pi pi-arrow-up-right"
+    iconColor="var(--p-green-500)"
+  />
 
-    <app-stat-card
-      title="Restock Rate"
-      value="68%"
-      subtitle="Products replenished on time"
-      icon="pi pi-refresh"
-      iconColor="var(--p-blue-500)"
-    />
+  <app-stat-card
+    title="Restock Rate"
+    value="68%"
+    subtitle="Products replenished on time"
+    icon="pi pi-refresh"
+    iconColor="var(--p-blue-500)"
+  />
 
-    <app-stat-card
-      title="Turnover Ratio"
-      value="1.42"
-      subtitle="Average inventory turnover"
-      icon="pi pi-chart-line"
-      iconColor="var(--p-orange-500)"
-    />
-  </section>
+  <app-stat-card
+    title="Turnover Ratio"
+    value="1.42"
+    subtitle="Average inventory turnover"
+    icon="pi pi-chart-line"
+    iconColor="var(--p-orange-500)"
+  />
+</section>
 
-  <section class="stock-analysis-page__table">
-    <app-data-table title="Stock Overview" variant="stock-overview" [rows]="stockOverviewRows" />
-  </section>
-</div>
+<section class="stock-analysis-table">
+  <app-data-table title="Stock Overview" variant="stock-overview" [rows]="stockOverviewRows" />
+</section>

@@ -1,4 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ButtonModule } from 'primeng/button';
+import { DatePickerModule } from 'primeng/datepicker';
+import { SelectModule } from 'primeng/select';
 import { stockOverviewRows } from '../../assets/mocks/stock-overview-data';
 import { ChartWidgetComponent } from '../../components/chart-widget/chart-widget';
 import { ChartOptions } from '../../components/chart-widget/chart-widget.type';
@@ -8,7 +11,14 @@ import { ChartThemeService } from '../../services/chart-theme.service';
 
 @Component({
   selector: 'app-stock-analysis',
-  imports: [ChartWidgetComponent, StatCardComponent, DataTableComponent],
+  imports: [
+    ChartWidgetComponent,
+    StatCardComponent,
+    DataTableComponent,
+    DatePickerModule,
+    SelectModule,
+    ButtonModule,
+  ],
   templateUrl: './stock-analysis.html',
   styleUrl: './stock-analysis.scss',
   standalone: true,
@@ -16,6 +26,20 @@ import { ChartThemeService } from '../../services/chart-theme.service';
 })
 export class StockAnalysisComponent {
   stockOverviewRows = stockOverviewRows;
+  readonly categoryOptions = [
+    { label: 'All Categories', value: 'all' },
+    { label: 'Electronics', value: 'electronics' },
+    { label: 'Furniture', value: 'furniture' },
+    { label: 'Office Supplies', value: 'office' },
+    { label: 'Apparel', value: 'apparel' },
+  ];
+  readonly warehouseOptions = [
+    { label: 'All Warehouses', value: 'all' },
+    { label: 'Central', value: 'central' },
+    { label: 'Hub', value: 'hub' },
+    { label: 'Storage', value: 'storage' },
+    { label: 'Port', value: 'port' },
+  ];
   private readonly chartThemeService = inject(ChartThemeService);
 
   private buildStockMovementChart(): ChartOptions {
