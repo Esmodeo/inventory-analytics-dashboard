@@ -1,0 +1,14 @@
+.p-menu-item-link-active {
+  color: var(--p-menu-item-focus-color);
+  background: var(--p-menu-item-focus-background);
+}
+
+.sidebar-menu {
+  .p-menu {
+    border: none;
+    background: none;
+    .p-menu-submenu-label {
+      padding-left: 0;
+    }
+  }
+}
