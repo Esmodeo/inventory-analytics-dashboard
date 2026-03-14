@@ -32,6 +32,7 @@
     "@primeuix/themes": "^2.0.3",
     "@tailwindcss/postcss": "^4.2.1",
     "apexcharts": "^5.10.3",
+    "firebase": "^12.10.0",
     "ng-apexcharts": "^2.3.0",
     "postcss": "^8.5.8",
     "primeicons": "^7.0.0",

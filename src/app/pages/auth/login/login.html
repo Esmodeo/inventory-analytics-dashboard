@@ -1,0 +1,55 @@
+<section class="login-shell">
+  <p-card>
+    <h1 class="text-2xl bold text-center mb-4">Sign in</h1>
+
+    <form class="login-form" [formGroup]="form" (ngSubmit)="onLogin()">
+      <div class="field-block">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          pInputText
+          formControlName="email"
+          placeholder="name@company.com"
+          fluid
+          [class.ng-invalid]="form.controls.email.invalid && form.controls.email.touched"
+        />
+        @if (form.controls.email.invalid && form.controls.email.touched) {
+          <small class="field-error">Enter a valid email address.</small>
+        }
+      </div>
+
+      <div class="field-block">
+        <label for="password">Password</label>
+        <p-password
+          inputId="password"
+          formControlName="password"
+          [feedback]="false"
+          [toggleMask]="true"
+          placeholder="Minimum 6 characters"
+          fluid
+        />
+        @if (form.controls.password.invalid && form.controls.password.touched) {
+          <small class="field-error">Password must contain at least 6 characters.</small>
+        }
+      </div>
+
+      @if (errorMessage) {
+        <p-message severity="error" variant="simple">{{ errorMessage }}</p-message>
+      }
+
+      <div class="login-actions">
+        <p-button type="submit" label="Login" icon="pi pi-sign-in" styleClass="w-full" />
+        <p-button
+          type="button"
+          label="Create account"
+          icon="pi pi-user-plus"
+          severity="secondary"
+          [outlined]="true"
+          styleClass="w-full"
+          (onClick)="onRegister()"
+        />
+      </div>
+    </form>
+  </p-card>
+</section>

@@ -23,7 +23,7 @@ export class SidebarComponent {
           {
             label: 'Dashboard',
             icon: 'pi pi-home',
-            routerLink: '/',
+            routerLink: '/dashboard',
             routerLinkActiveOptions: { exact: true },
           },
           {

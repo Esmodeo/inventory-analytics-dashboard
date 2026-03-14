@@ -8,8 +8,9 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
-import { ChartThemeService } from '../../services/chart-theme.service';
 import { filter, map } from 'rxjs/operators';
+import { AuthService } from '../../services/auth.service';
+import { ChartThemeService } from '../../services/chart-theme.service';
 
 @Component({
   selector: 'app-topbar',
@@ -32,6 +33,7 @@ export class TopbarComponent {
   toggleDarkMode() {
     this.themeService.toggleTheme();
   }
+  private auth = inject(AuthService);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private cdr = inject(ChangeDetectorRef);
@@ -56,5 +58,8 @@ export class TopbarComponent {
         this.title = data?.['title'] ?? 'Dashboard';
         this.cdr.markForCheck();
       });
+  }
+  logout() {
+    this.auth.logout();
   }
 }
